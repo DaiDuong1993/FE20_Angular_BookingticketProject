@@ -1,0 +1,120 @@
+<section class="quanly_nguoidung">
+    
+    
+        <div class="container dangky">
+            <h3 class="display-4 text-center">Thêm Người Dùng</h3>
+            <form action="" #frmDangKy="ngForm" (ngSubmit)="dangKyAdmin(frmDangKy.value)">
+                <div class="form-group">
+                    <label for="">Tài Khoản</label>
+                    <input minlength="6" maxlength="50" #taiKhoan3="ngModel" type="text" name="taiKhoan"
+                        class="form-control" placeholder="Tai Khoan" ngModel required>
+                    <div *ngIf="(taiKhoan3.touched || taiKhoan3.dirty) && taiKhoan3.errors">
+                        <div *ngIf="taiKhoan3.errors.required" class="alert alert-danger">Tài Khoản Không Được Bỏ Trống!
+                        </div>
+                        <div *ngIf="(taiKhoan3.errors.minlength || taiKhoan3.errors.maxlength)"
+                            class="alert alert-danger">
+                            Tài Khoản Không Được Ít Hơn 6 Ký Tự!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Mật Khẩu</label>
+                    <input #matKhau3="ngModel" type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu"
+                        ngModel required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <div *ngIf="matKhau3.errors && (matKhau3.touched || matKhau3.dirty)">
+                        <div class="alert alert-danger" *ngIf="matKhau3.errors.required">
+                            Không Được Bỏ Trống Trường Này!
+                        </div>
+                        <div class="alert alert-danger" *ngIf="matKhau3.errors.pattern">
+                            Mật Khẩu phải có ít nhất 8 ký tự và có ít nhất 1 số, 1 ký tự viết Hoa và 1 ký tự viết
+                            Thường.</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Họ Tên</label>
+                    <input #hoTen="ngModel" type="text" name="hoTen" class="form-control" placeholder="Họ Tên" ngModel
+                        required>
+                    <div *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+                        <div class="alert alert-danger" *ngIf="hoTen.errors.required">
+                            Không Được Bỏ Trống Trường Này!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input #email="ngModel" type="email" name="email" class="form-control" placeholder="Email" ngModel
+                        required>
+                    <div *ngIf="email.errors && (email.touched || email.dirty)">
+                        <div class="alert alert-danger" *ngIf="email.errors.required">
+                            Không Được Bỏ Trống Trường Này!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Số Điện Thoại</label>
+                    <input type="tel" name="soDt" class="form-control" placeholder="Số Điện Thoại" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="">Mã Nhóm</label>
+                    <input type="text" name="maNhom" class="form-control" ngModel>
+
+                </div>
+                <div class="form-group">
+                    <label for="">Mã Loại Người Dùng</label><br>
+                    <input type="radio" name="maLoaiNguoiDung" value="KhachHang"  ngModel>Khách Hàng<br>
+                    <input type="radio" name="maLoaiNguoiDung" value="QuanTri" ngModel>Admin
+
+                </div>
+
+                <div id="buttonND" class="form-group">
+                
+                    <button class="btn btn-success" [ngStyle]="{'display':cNhatStatus ? 'none' : 'block' }" type="submit"
+                        [disabled]="frmDangKy.invalid">Thêm Người Dùng</button>
+                    <button class="btn btn-primary" [ngStyle]="{'display':cNhatStatus ? 'block' : 'none' }" type="button"
+                        [disabled]="frmDangKy.invalid" (click)="CapNhatNgDung(frmDangKy.value)">Cập
+                        Nhật</button>
+                    <!-- <button class="btn btn-danger w-100 mt-3" (click)="tKiemStatus()">Tìm Kiếm Người Dùng</button> -->
+                </div>
+            </form>
+        </div>
+        
+        <div class="container timKiem">
+            <input [(ngModel)]='tukhoa' id="timKiemTen"   class="w-100" type="text">
+            <button id="btnTimKiem" class="btn btn-danger w-100" (click)="timkiemNguoiDung(tukhoa)">Tìm Kiếm Người Dùng</button>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        <!-- table -->
+        <table class="table m-auto">
+            <thead class="bg-dark text-white">
+                <th>STT</th>
+                <th>Tài Khoản</th>
+                <th>Họ Tên</th>
+                <th>Số DT</th>
+                <th>Email</th>
+                <th>Mật Khẩu</th>
+                
+                <th></th>
+            </thead>
+            <tbody class="text-white">
+                <tr *ngFor="let ngdung of DSND; let STT = index">
+                    <td>{{STT}}</td>
+                    <td>{{ngdung.taiKhoan}}</td>
+                    <td>{{ngdung.hoTen}}</td>
+                    <td>{{ngdung.soDt}}</td>
+                    <td>{{ngdung.email}}</td>
+                    <td>{{ngdung.matKhau}}</td>
+                    
+                    <td>
+                        <button class="btn btn-primary" (click)="CapNhat(ngdung)">Chỉnh Sửa</button>
+                        <button class=" ml-2 btn btn-danger" (click)="XoaND(ngdung)">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+   
+</section>

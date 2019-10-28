@@ -1,0 +1,8 @@
+
+<button *ngIf="!gheInput.daDat" [ngClass]="{'gheVip':gheInput.loaiGhe==='Vip','gheDangDat':dangDat}" class="ghe" (click)="datGhe()">{{gheInput.stt}}</button>
+
+<button *ngIf="gheInput.daDat" disabled class="ghe gheDaDat">
+        
+    <img class="img_notchose" *ngIf="gheInput.daDat" src="../../../../assets/images/notchoose.png" alt="">
+</button>
+<ng-content></ng-content>

@@ -1,0 +1,145 @@
+<section id="chitietdatve">
+    <div class="row">
+        <div class="col-md-9 phongVe">
+            <div class="manHinh">SCREEN</div>
+            <div class="row cumGheNgoi">
+                <div class="col-md-12"> 
+                    <!--Thông tin ghế-->
+                    <app-ghe [gheInput]="ghe" *ngFor="let ghe of lichChieu.danhSachGhe;let i=index">
+                        <br *ngIf="(i+1)%16===0" />
+                    </app-ghe>
+                </div>
+                
+            </div>
+            <div class="kyHieuGhe">
+                <div class="kyHieuGhe--ghe ghe--thuong">
+                    <a></a><span>Ghế Thường</span>
+                </div>
+                <div class="kyHieuGhe--ghe ghe--vip">
+                    <a></a><span>Ghế Vip</span>
+                </div>
+                <div class="kyHieuGhe--ghe ghe--dangdat">
+                    <a></a><span>Ghế Đang Đặt</span>
+                </div>
+                <div class="kyHieuGhe--ghe ghe--dadat">
+                    <a><img src="../../../assets/images/notchoose.png" alt=""></a><span>Ghế Đã Đặt</span>
+                    
+                </div>
+            </div>
+            <span class="loivao left">
+                <img src="../../../assets/images/exit.png" alt="">
+            </span>
+            <span class="loivao right">
+                    <img src="../../../assets/images/exit.png" alt="">
+                </span>
+        </div>
+        <div class="thongtin_khachhang col-md-3">
+            <div class="tencumrap">
+                <span >{{thongTinPhim.tenCumRap}}</span>
+            </div>
+            <div class="thoigianduve">
+                <span>Thời gian dữ vé:</span>
+                <p id="time_count"></p>
+            </div>
+            <div class="col-md-12">
+                <!--Thông tin lịch chiếu của phim-->
+                <div class="container">
+                    <div class="film">
+                        <span>{{thongTinPhim.tenPhim}}</span>
+                        <p>{{thongTinPhim.tenRap}}</p>
+                        <p>{{thongTinPhim.ngayChieu}} - {{thongTinPhim.gioChieu}}PM</p>
+                    </div>
+                    <p>
+                        ghế đang chọn: </p>
+                        Ghế:     
+                    <span *ngFor="let gheDangDat of danhSachGheDangDat">
+                    {{gheDangDat.stt}}
+                    </span>
+                    
+                    <div class="tongTien">
+                        {{tongTien | number}} VND
+                    </div>
+                </div>
+            </div>
+            <div class="container ptthanhtoan">
+                <p>Phương Thức Thanh Toán: </p>
+                <form action="">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+                            <img src="../../../assets/images/momo_icon.png" alt=""> Thanh toán bằng ví điện tử MoMo.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                            <img src="../../../assets/images/zalopay_icon.png" alt=""> Thanh toán bằng ZaloPay.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio3">
+                            <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3" >
+                            <img src="../../../assets/images/atm_icon.png" alt=""> Thanh toán bằng ngân hàng nội địa.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                            <label class="form-check-label" for="radio4">
+                                <input type="radio" class="form-check-input" id="radio4"  name="optradio" value="option4" >
+                                <img src="../../../assets/images/visa-mastercard-icon.png" alt=""> Thanh toán bằng thẻ Visa/MasterCard.
+                            </label>
+                        </div>
+                    <div class="form_btn">
+                        <a class="btn btn-grey" routerLink="/chi-tiet-phim/{{maPhim}}">Quay Lại</a>
+                        <button [disabled]="danhSachGheDangDat.length===0" class="btn btn-success" (click)="datVe()">Thanh Toán</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="hethandatve" id="handatve">
+        <div class="hethan_cover">
+            <p>Bạn đã hết thời gian để đặt vé!
+                <a (click)="reload()">Hãy trao cho anh!</a>
+            </p>
+        </div>
+    </div>
+    <div class="modal_ve" id="modal_ve">
+        <div class="modal_ve--content">
+            <div class="head">
+                <h3 class="ve_tentk">Tài Khoản: {{thongtinTK.taiKhoan}}</h3>
+                <h5 class="ve_hoTen"> Họ Tên: {{thongtinTK.hoTen}} </h5>
+                ---- 
+                <h5 class="ve_sdt">SDT: {{thongtinTK.soDT}}</h5>
+            </div>
+            <div class="body">
+                <p class="ve_tenphim">Phim: {{thongTinPhim.tenPhim}}</p>
+                <span>{{thongtinve.ngayDat | date:'dd/MM/yyyy'}}</span>
+                <p class="ve_tenhtr">{{thongTinPhim.tenCumRap}}</p>
+                <p class="ve_xuatchieu">{{thongTinPhim.tenRap}} Xuất Chiếu: {{thongTinPhim.gioChieu}}</p>
+                <p class="ve_soghe" *ngIf="DSghedadat">Ghế: 
+                    <span *ngFor="let gheDaDat of DSghedadat">
+                    {{gheDaDat.stt}}
+                    </span>
+                </p>
+                <span class="ve_tongTien">
+                    Tổng Cộng:    {{tienmuave | number}} VND
+                </span>
+            </div>
+            <div class="footer">
+                <img  src="../../../assets/images/1200px-QR_code_for_mobile_English_Wikipedia.svg.webp" alt="">
+                
+                <div class="ve_btn" id="ve_btn">
+                    <a class="btn ve_btn_xacnhan" href="#" >OK!</a>
+                    <a class="btn ve_btn_chup" id="chup">Chụp Vé</a>
+                </div>
+                <div class="ve_tks mb-3" id="ve_tks">
+                    <h5>Cảm Ơn Quý Khách!</h5>
+                    Vé không được hoàn lại dưới mọi hình thức!
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

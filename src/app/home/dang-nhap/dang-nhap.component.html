@@ -1,0 +1,133 @@
+
+
+<section class="dang_nhap">
+    
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form #frmDangKy="ngForm" (ngSubmit)="DangKy(frmDangKy.value)">
+            <h1>Tạo Tài Khoản</h1>
+            <div class="social-container">
+                <a href="" class="social"><i class="fa fa-facebook    "></i></a>
+                <a href="" class="social"><i class="fa fa-google-plus    "></i></a>
+                <a href="" class="social"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            
+            </div>
+            <span>Đăng Ký Nhanh Bằng Email Của Bạn!</span>
+            <div class="form-group">
+                
+                <input minlength="6" maxlength="50" #taiKhoan2="ngModel" type="text" name="taiKhoan" class="form-control"
+                    placeholder="Tai Khoan" ngModel required>
+                <div *ngIf="(taiKhoan2.touched || taiKhoan2.dirty) && taiKhoan2.errors">
+                    <div *ngIf="taiKhoan2.errors.required" class="alert alert-danger">Tài Khoản Không Được Bỏ Trống!</div>
+                    <div *ngIf="(taiKhoan2.errors.minlength || taiKhoan2.errors.maxlength)" class="alert alert-danger">
+                        Tài Khoản Không Được Ít Hơn 6 Ký Tự!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                
+                <input #matKhau2="ngModel" type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" ngModel
+                    required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                <div *ngIf="matKhau2.errors && (matKhau2.touched || matKhau2.dirty)">
+                    <div class="alert alert-danger" *ngIf="matKhau2.errors.required">
+                        Không Được Bỏ Trống Trường Này!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="matKhau2.errors.pattern">
+                        Mật Khẩu phải có ít nhất 8 ký tự và có ít nhất 1 số, 1 ký tự viết Hoa và 1 ký tự viết Thường.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <input #hoTen="ngModel" type="text" name="hoTen" class="form-control" placeholder="Họ Tên" ngModel required>
+                <div *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+                    <div class="alert alert-danger" *ngIf="hoTen.errors.required">
+                        Không Được Bỏ Trống Trường Này!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <input #email="ngModel" type="email" name="email" class="form-control" placeholder="Email" ngModel required>
+                <div *ngIf="email.errors && (email.touched || email.dirty)">
+                    <div class="alert alert-danger" *ngIf="email.errors.required">
+                        Không Được Bỏ Trống Trường Này!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <input type="tel" name="soDT" class="form-control" placeholder="Số Điện Thoại" ngModel>
+            </div>
+            <div class="form-group">
+                
+                <input placeholder="Mã Thành Viên" type="option" name="maNhom" class="form-control" ngModel>
+            
+            </div>
+            <div class="radio_content">
+                <ul class="list">
+                    <li class="list__item">
+                        <input type="radio" class="radio-btn" name="maLoaiNguoiDung" value="KhachHang" ngModel />
+                        <label for="a-opt" class="label">Khách Hàng!</label>
+                    </li>
+                </ul>
+            </div>
+            <button type="submit" [disabled]="frmDangKy.invalid">Đăng Ký</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form #frmDangNhap="ngForm" (ngSubmit)="dangNhap(frmDangNhap.value)">
+			<h1>Đăng Nhập</h1>
+			<div class="social-container">
+                    
+	            <a href="" class="social"><i class="fa fa-facebook    "></i></a>
+				<a href="" class="social"><i class="fa fa-google-plus    "></i></a>
+				<a href="" class="social"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</div>
+			<span>Đăng Nhập Bằng Tài Khoản Của Bạn!</span>
+            <div class="form-group">
+                
+                <input #taiKhoan='ngModel' minlength="6" maxlength="50" required placeholder="Tai Khoan" name="taiKhoan"
+                    class="form-control" ngModel />
+                <div *ngIf="(taiKhoan.touched || taiKhoan.dirty) && taiKhoan.errors">
+                    <div *ngIf="taiKhoan.errors.required" class="alert alert-danger">Tài Khoản Không Được Bỏ Trống!</div>
+                    <div *ngIf="(taiKhoan.errors.minlength || taiKhoan.errors.maxlength)" class="alert alert-danger">
+                        Tài Khoản Không Được Ít Hơn 6 Ký Tự!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <input #matKhau='ngModel' type="password" name="matKhau" placeholder="Mat Khau" class="form-control" ngModel
+                    required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                <div *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+                    <div class="alert alert-danger" *ngIf="matKhau.errors.required">
+                        Không Được Bỏ Trống Trường Này!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="matKhau.errors.pattern">Mật Khẩu phải có ít nhất 8 ký tự và có ít nhất 1
+                        số, 1 ký tự viết Hoa và 1 ký tự viết Thường.</div>
+                </div>
+            </div>
+			<a href="#">Quên Mật Khẩu!!!</a>
+            <button type="submit" >Đăng nhập</button>
+            <!-- [disabled]="frmDangNhap.invalid" -->
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Chào Mừng Trở Lại!</h1>
+				<p>Đăng Nhập Ngay Để Mua Vé Nhé!!!</p>
+				<button class="ghost" id="signIn">Đăng Nhập</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Chào,<br> Đằng Ấy!</h1>
+				<p>Đăng Ký Ngay Để Nhận Thêm Ưu Đãi Nha!!!</p>
+				<button class="ghost" id="signUp">Làm Luôn!!!</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</section>

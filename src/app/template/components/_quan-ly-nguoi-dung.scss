@@ -1,0 +1,63 @@
+.quanly_nguoidung{
+    padding-top: 20px;
+    // height: 100vh;
+    .dangnhap{
+    color: white;
+    width: 40%;
+    h3{
+        text-align: center;
+    }
+    form{
+        text-align: left;
+        .form-group{
+        
+            div{
+                text-align: center !important;
+            }
+            
+            button{
+                width: 100%;
+            }
+            input.ng-invalid.ng-touched{
+                border-left: 3px solid red;
+            }
+            input.ng-valid.ng-touched{
+                border-left: 3px solid green;
+            }
+        }
+    }
+}
+.dangky{
+    color: white;
+    width: 40%;
+    h3{
+        text-align: center;
+    }
+    form{
+        text-align: left;
+        .form-group{
+        
+            div{
+                text-align: center !important;
+            }
+            
+            button{
+                width: 100%;
+            }
+            input.ng-invalid.ng-touched{
+                border-left: 3px solid red;
+            }
+            input.ng-valid.ng-touched{
+                border-left: 3px solid green;
+            }
+        }
+    }
+    
+}
+.table{
+    color: white;
+    width: 95%;
+    border: 1px solid white;
+    
+}
+}

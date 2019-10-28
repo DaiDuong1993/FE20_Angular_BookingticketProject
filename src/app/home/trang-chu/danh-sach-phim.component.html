@@ -1,0 +1,287 @@
+<!-- SLIDE BANNER -->
+<section id="slide">
+  <div class="slider">
+    <owl-carousel-o [options]="customOptions1"  (dragging)="isDragging = $event.dragging" *ngIf="Slider" >
+
+      
+        <ng-template *ngFor="let slide of Slider"  carouselSlide  >
+          <a [id]="slide.maPhim" owlRouterLink="/chi-tiet-phim/{{slide.maPhim}}" [stopLink]="isDragging">
+              <img  [src]="slide.moTa" alt="">  
+          </a>
+          <!-- <img [owlRouterLink]="['/chi-tiet-phim/:id']" [stopLink]="isDragging"  [src]="slide.banner" alt=""> -->
+          <button class="play-button" (click)="phatTrailerchoSlider(slide.trailer)">
+            <i class="fa fa-play"></i>
+          </button>
+          
+          </ng-template>
+      
+  
+    </owl-carousel-o>
+  </div>
+</section>
+
+
+<!-- THONG TIN SECTION -->
+<section id="thongtin">
+  <div class=" container row">
+    <div class="col-md-12 col-lg-4">
+      <div class="circle">
+        <img src="../../../assets/images/cinemaIcon.jpg" alt="">
+      </div>
+      <h5>Hệ Thống Rạp Chiếu Phim</h5>
+      <hr>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente sed doloribus magni maxime eveniet, culpa eum
+        ratione accusamus praesentium quo.
+      </p>
+      <a href="#cumrap">Chi Tiết</a>
+    </div>
+    <div class="col-md-12 col-lg-4">
+      <div class="circle">
+        <img src="../../../assets/images/movie.png" alt="">
+      </div>
+      <h5>Trailer</h5>
+      <hr>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente sed doloribus magni maxime eveniet, culpa eum
+        ratione accusamus praesentium quo.
+      </p>
+      <a href="">Chi Tiết</a>
+    </div>
+    <div class="col-md-12 col-lg-4">
+      <div class="circle">
+        <img src="../../../assets/images/popcorn-movie-time.png" alt="">
+      </div>
+      <h5>Phim Đang Chiếu</h5>
+      <hr>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente sed doloribus magni maxime eveniet, culpa eum
+        ratione accusamus praesentium quo.
+      </p>
+      <a href="#lichchieu">Chi Tiết</a>
+    </div>
+    
+  </div>
+</section>
+<!-- SLIDE FILM DANG CHIEU & SAP CHIEU -->
+<section id="lichchieu">
+  <!-- button chuyen phim -->
+  <div class="bucket_phim ">
+    <div class="btn_lichchieu text-center pt-2">
+      <button class="glow-on-hover btn_dangchieu mr-4" (click)="show()">Phim Đang Chiếu</button>
+      <button class="glow-on-hover btn_sapchieu" (click)="hide()">Phim Sắp Chiếu</button>
+    </div>
+    <div class="container">
+
+      <!-- phim dang chieu -->
+      <div class="DangChieu" *ngIf="phimStatus;else sapChieu">
+        <owl-carousel-o class=" container sliderPhim" [options]="customOptions" *ngIf="phimDangChieu">
+
+          <ng-container *ngFor="let phim of phimDangChieu">
+            <ng-template carouselSlide [id]="phim.maPhim">
+              <app-item-phim [phim]="phim"></app-item-phim>
+            </ng-template>
+          </ng-container>
+
+        </owl-carousel-o>
+      </div>
+
+      <!-- phim sap chieu -->
+      <ng-template #sapChieu>
+        <div class="SapChieu">
+          <owl-carousel-o class=" container sliderPhim " [options]="customOptions" *ngIf="phimSapChieu">
+
+            <ng-container *ngFor="let phim of phimSapChieu">
+              <ng-template carouselSlide [id]="phim.maPhim">
+                <app-item-phim [phim]="phim">
+                </app-item-phim>
+              </ng-template>
+            </ng-container>
+
+          </owl-carousel-o>
+        </div>
+      </ng-template>
+
+    </div>
+    <div class="search_phim row">
+      <div class="col-md-9">
+        <div class="form_search">
+          <div>
+            <input [(ngModel)]='tukhoa' id="s" type="text" placeholder="Tìm Kiếm Phim Khác!">
+            <button id="b" type="button" (click)="timKiemPhim(tukhoa)"></button>
+            <a id="a">
+              <i class="fa fa-search"></i>
+            </a>
+          </div>
+        </div>
+        <div class="search_result" *ngIf="dsPhimTimKiem">
+          <div *ngFor=" let phim of dsPhimTimKiem">
+            <img [src]="phim.hinhAnh" alt="">
+            <a routerLink="/chi-tiet-phim/{{phim.maPhim}}">{{phim.tenPhim}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        HOẶC
+        <a href="#cumrap">Xem Lịch Chiếu Phim</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<div class="play_video" *ngIf="hienthi" (click)="hideVideo()">
+  <app-video [hienthi]="hienthi" link="{{linkTrailer}}"></app-video>
+</div>
+
+<!-- CỤM RẠP CHIẾU SECTION -->
+<section id="cumrap">
+  <!-- <h1 class="text-white">HỆ THỐNG RẠP CHIẾU PHIM</h1> -->
+  <div class="container hethongrap">
+    <div class="row">
+        <ul class="hethongrap_icon nav nav-tabs col-md-2">
+            <li class="nav-item" *ngFor="let htr of cinemaSystem; let stt=index">
+              <a [ngClass]="{'active':stt===0}" (click)="changeCinemaCluster(htr.maHeThongRap)" data-toggle="tab" class="nav-link" href="#{{htr.maHeThongRap}}">
+                  <img  [src]="htr.logo" alt="">
+              </a>
+            </li>
+        </ul>
+        <div class="hethongrap_cumrap tab-content col-md-5 " >
+
+            <div  class="tab-pane container" *ngFor="let htr of cinemaSystem; let stt=index" [ngClass]="{'active':stt===0}" id="{{htr.maHeThongRap}}" >
+              <!-- kiểm tra thông tin cụm rạp lấy từ api có hay không -->
+              <ul class="list_group" *ngIf="cumRapTheoHtrRap.length > 0; else none">
+                
+                  <li class=" list_group_item row mb-4" *ngFor="let cumRap of cumRapTheoHtrRap; let stt=index "
+                    [ngClass]="{'active':stt===0}" (click)="layDSPtheoCumRap(cumRap)">
+                    
+                      <img [src]="htr.logo" alt="" class="col-3">
+                      <div class="col-md-8">
+                        <h5>{{cumRap.tenCumRap}}</h5>
+                        <p>{{cumRap.diaChi}}</p>
+                        <!-- <a href="">Chi Tiết</a> -->
+                      </div>
+                    
+                  </li>
+               
+              </ul>
+              <ng-template #none></ng-template>
+              
+            </div>
+            
+        </div>
+        <div class="col-md-5 hethongrap_cumrap_dsphim">
+            <div class="phim_content">
+              <div class="phim_hinhanh">
+                <span>{{phimChieu.tenPhim}}</span>
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img [src]="phimChieu.hinhAnh" alt="phimHinhAnh">
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="bg-img" [ngStyle]="{ 'background-image': 'url(' + phimChieu.hinhAnh + ')'}"></div>
+                      <!-- <h1>{{phimChieu.tenPhim}}</h1>  -->
+                      
+                    </div>
+                  </div>
+                </div>                
+                <div>{{phimChieu.ngayChieuGioChieu | date :'dd/MM/yyyy'}}<br>
+                  <strong>{{phimChieu.tenRap}}</strong>
+                </div>
+              </div>
+              <div class="phim_lichchieu " >
+                
+                <span *ngFor="let itemPhim of DSPtheoCumRap; let i=index">
+                   
+                    <a routerLink="/chi-tiet-phim/{{itemPhim.maPhim}}" [innerHTML]="itemPhim.ngayChieuGioChieu | date : 'hh:mm'" *ngIf="i<=6"></a>
+                    <br *ngIf="i == 4">
+                </span>
+                  
+              </div>
+              
+              
+            </div>
+        </div>
+        
+    </div>
+  </div>
+  <div id="subscribe" class="container">
+    <h5>Theo Dõi Phim Mới Nhất Của Chúng Tôi</h5>
+    <div id="sub">
+      <form action="" id="sub_form">
+        <div>
+          <input id="s_i" type="email" placeholder="NHẬP EMAIL CỦA BẠN">
+          <button id="s_b">SUBSCRIBE</button>
+        </div>
+      </form>
+    </div>
+    <span>Tham gia cùng chúng tôi để có ngay những thông tin về bộ phim mới nhất! *Thông tin email của bạn sẽ dược bảo mật</span>
+  </div>
+  <!-- <div class="set-size charts-container">
+      <div class="pie-wrapper progress-30">
+        <span class="label">30<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+      </div>
+    
+      <div class="pie-wrapper progress-60">
+        <span class="label">60<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+      </div>
+    
+      <div class="pie-wrapper progress-90">
+        <span class="label">90<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+      </div>
+    
+      <div class="pie-wrapper progress-45 style-2">
+        <span class="label">45<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+    
+      <div class="pie-wrapper progress-75 style-2">
+        <span class="label">75<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+    
+      <div class="pie-wrapper progress-95 style-2">
+        <span class="label">95<span class="smaller">%</span></span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      
+      <div class="pie-wrapper pie-wrapper--solid progress-65">
+        <span class="label">65<span class="smaller">%</span></span>
+      </div>
+      
+      <div class="pie-wrapper pie-wrapper--solid progress-25">
+        <span class="label">25<span class="smaller">%</span></span>
+      </div>
+      
+      <div class="pie-wrapper pie-wrapper--solid progress-88">
+        <span class="label">88<span class="smaller">%</span></span>
+      </div>
+    </div> -->
+
+</section>
+

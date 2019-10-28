@@ -1,0 +1,445 @@
+#chitietdatve{
+    background: #F0F2F0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+        .phongVe{
+            padding: 35% 0;
+            padding-bottom: 10%;
+            .manHinh{
+            border-bottom: 20px solid black;
+            margin: auto;
+            margin-top: -37%;
+            width: 70%;
+            color: rgba(194, 188, 188, 0.521);
+            text-align: center;
+            font-size: 34px;
+            }
+            .cumGheNgoi{
+                margin: auto;
+                transform: translateY(50%);
+                text-align: center;
+                margin-top: -10%;
+                
+            
+            }
+        }
+        
+    
+        .thongtin_khachhang{
+            background-color: white;
+            div.thoigianduve{
+                #time_count{
+                    margin-top: 20px;
+                    color: red;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 1.4em;
+                }
+            }
+            .tencumrap{
+                color:white;
+                background: #56ab2f;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to left, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to left, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                width: 100%;
+                padding: 30px 0;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+            .container{
+                margin-top:20%;
+                text-transform: uppercase;
+                .film{
+                    margin: 20px 0;
+                    p{
+                        font-size: .9em;
+                        margin-bottom: .2em;;
+                    }
+                }
+                p{
+                    font-size: 1.4em;
+                }
+                span{
+                    color: green;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
+                .tongTien{
+                    width: 100%;
+                    margin: 20px 0;
+                    padding: 15px 50px;
+                    text-align: center;
+                    background: #56ab2f;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.5em;
+                }
+            }
+            .ptthanhtoan{
+                .form-check{
+                    margin-bottom: 30px;
+                    label{
+                        
+                        input[type=radio],
+                        input[type=checkbox]{
+                        transform: scale(1.5);
+                        margin-top: 14px;
+                        margin-right: .4em;
+                        }
+                        img{
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
+                    
+                }
+                .form_btn{
+                    width: 100%;
+                    display: flex;
+                    .btn{
+                        width: 100%;
+                        padding: 15px 0;
+                    }
+                    .btn-grey{
+                        background: #304352;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #d7d2cc, #304352);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #d7d2cc, #304352); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+                    }
+                    .btn-success{
+                        background: #DCE35B;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+                    }
+                }
+            }
+        }
+        .kyHieuGhe{
+            margin: auto;
+            margin-top:30%;
+            width: 100%;
+            text-align: center;
+            .kyHieuGhe--ghe{
+                display: inline-block;
+                margin-right: 20px;
+                a{
+                    width: 30px;
+                    height: 30px;
+                    display: inline-block;
+                    margin-bottom: -13px;
+                }
+                span{
+                    margin-left: 17px;
+                }
+
+            }
+            .ghe--thuong{
+                a{
+                    background-color: rgb(121, 118, 118);
+                }
+            }
+            .ghe--vip{
+                a{
+                    background-color: rgb(180, 62, 19);
+                }
+            }
+            .ghe--dangdat{
+                a{
+                    background-color: rgb(22, 192, 22);
+                }
+            }
+            .ghe--dadat{
+                //margin-bottom: 5px;
+                a{
+                    background-color:rgb(20, 20, 20);
+                    color: white;
+                    position: relative;
+                    img{
+                        position: absolute;
+                        z-index: 1;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        width: auto;
+                    }
+                    
+                }
+            }
+        }
+        span.loivao{
+            position: absolute;
+            bottom: 18%;
+            img{
+                width: 300%;
+                transform: rotate(270deg);
+            }
+        }
+        span.loivao.left{
+            left: 7%;
+        }
+        span.loivao.right{
+            right: 9%;
+        }
+    }  
+        
+    .hethandatve{
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        height: 100%;
+        background-color: #18181860;
+        .hethan_cover{
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 100px 200px;  
+            text-align: center;
+            background: #BA8B02;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #181818, #BA8B02);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+            p{
+                font-size: 1.2em;
+                font-weight: bold;
+                a{
+                    text-decoration: none;
+                    cursor: pointer;
+                    &:hover,
+                    &:focus{
+                        color: blue;
+                    }
+                }
+            }
+        }
+    }
+    .modal_ve{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 30% 10%;
+        background-color: #1818185b;
+        z-index: 1;
+        display: none;
+        .modal_ve--content{
+            width: 30%;
+            margin:0 auto;
+            background-color: white;
+            padding: 30px 0;
+            padding-bottom: 0;
+            div.footer{
+                padding-top: 10%;
+                img{
+                    width: 20%;
+                }
+                div.ve_btn{
+                    width: 100%;
+                    margin-bottom: 5%;
+                    a{
+                        width: 50%;
+                        padding: 20px 30px;
+                        cursor: pointer;
+                        &:focus{
+                            outline: none;
+                            border: none;
+                            box-shadow: none;
+                        }
+                    }
+                    a.ve_btn_xacnhan{
+                        background: #00b09b;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+                        border: 1px solid white;
+                    }
+                    a.ve_btn_chup{
+                        background: #F1F2B5;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to left, #135058, #F1F2B5);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to left, #135058, #F1F2B5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                        border: 1px solid white;
+
+                    }
+                }
+                div.ve_tks{
+                    display: none;
+                   
+                }
+            }
+        }
+    }
+    
+}
+.ghe {
+    background-color: rgb(121, 118, 118);
+    color: rgb(121, 118, 118);
+    border-radius: 5px;
+    border: none;
+    width: 42px;
+    height: 45px;
+    cursor: pointer;
+    margin: 5px;
+}
+.gheVip{
+    background-color: rgb(180, 62, 19);
+    color: rgb(180, 62, 19) ;
+}
+.gheDaDat {
+    background-color:rgb(20, 20, 20);
+    cursor: no-drop;
+}
+.gheDangDat {
+    background-color: rgb(22, 192, 22);
+    cursor: pointer;
+    color: white;
+}
+
+
+@media only screen and (max-width: '1400px' ){
+    #chitietdatve{
+        // app-ghe{
+        //     span.gheDaDat{
+        //       top:14px ;
+        //     }
+        // }
+            .row{
+                span.loivao{
+                    bottom: 12%;
+                    img{
+                        width: 200%;
+                    }
+                }
+            }
+    }       
+}
+@media only screen and (max-width: '1300px' ){
+    #chitietdatve{
+        // app-ghe{
+        //     span.gheDaDat{
+        //      top:14px ;
+        //     }
+        // }
+        .row{
+            
+            .phongVe{
+                
+                .manHinh{
+                border-bottom: 15px solid black;
+                margin-top: -30%;
+                width: 70%;
+                
+                text-align: center;
+                font-size: 30px;
+                }
+                button.gheDaDat{
+                    top:10px;
+                }
+            }
+            .kyHieuGhe{
+                .kyHieuGhe--ghe{
+                    a{
+                        width: 20px;
+                        height: 20px;
+                        margin-bottom: 0px;
+                        img{
+                            width: 60%;
+                        }
+                    }
+
+    
+                }
+            }
+        }
+    }
+    .ghe{
+        width: 27px;
+        height: 30px;
+        font-size: .8em;
+    }
+}
+@media only screen and (max-width: '1000px' ){
+    #chitietdatve{
+        .row{
+            span.loivao{
+                bottom: 4%;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: '850px' ){
+    #chitietdatve{
+        .row{
+            
+            .phongVe{
+                flex: none;
+                max-width: 100%;
+                padding-bottom: 10%;
+                .manHinh{
+                border-bottom: 15px solid black;
+                margin-top: -25%;
+                
+                width: 70%;
+                
+                text-align: center;
+                font-size: 30px;
+                }
+            }
+            .kyHieuGhe{
+                margin-top: 35%;
+            }
+            .thongtin_khachhang {
+                flex: none;
+                max-width: 100%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: '640px' ){
+    #chitietdatve{
+        .row{
+            
+            .phongVe{
+                flex: none;
+                max-width: 100%;
+                margin-bottom: 90px;
+                padding-bottom: 0%;
+                overflow-x: auto;
+                overflow-y: auto;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .cumGheNgoi{
+                    margin-top: -15%;
+                    width: 638px;
+                    height: 400px;
+                }
+                
+            }
+            .kyHieuGhe {
+               margin-top: 60%;
+            }
+            span.loivao{
+               display: none;
+            }  
+        }
+    }
+}

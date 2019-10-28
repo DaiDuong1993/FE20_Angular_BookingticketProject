@@ -1,0 +1,78 @@
+<section id="quanLyPhim" class="mt-5 container">
+  <h3 class="display-4 text-center text-white  mb-3">Thêm Phim</h3>
+  <form #frmThemPhim="ngForm" (ngSubmit)="themPhim(frmThemPhim.value, hinhAnh)" action="" class="w-50 m-auto">
+    <div class="form-group">
+      <label for="">Mã Phim</label>
+      <input #maPhim type="text" name="maPhim" id="" class="form-control" placeholder="Mã Phim" aria-describedby="helpId" ngModel>
+    </div>
+    <div class="form-group">
+        <label for="">Tên Phim</label>
+      <input #tenPhim type="text" name="tenPhim" id="" class="form-control" placeholder="Tên Phim" aria-describedby="helpId"ngModel>
+    </div>
+    <div class="form-group">
+      <label for="">Bí Danh</label>
+      <input #biDanh type="text" name="biDanh" id="" class="form-control" placeholder="Bí Danh" aria-describedby="helpId"ngModel>
+    </div>
+    <div class="form-group">
+        <label for="">Trailer</label>
+      <input #trailer type="text" name="trailer" id="" class="form-control" placeholder="Trailer" aria-describedby="helpId"ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Mô Tả</label>
+      <input #moTa type="text" name="moTa" id="" class="form-control" placeholder="Mô Tả" aria-describedby="helpId" ngModel >
+    </div>
+    <div class="form-group">
+        <label for="">Mã Nhóm</label>
+      <input #maNhom type="text" name="maNhom" id="" class="form-control" placeholder="Mã Nhóm" aria-describedby="helpId"ngModel>
+    </div>
+    <div class="form-group">
+        <label for="">Ngày Khởi Chiếu</label>
+      <input #ngayKhoiChieu type="text" name="ngayKhoiChieu" id="" class="form-control" placeholder="Ngày Khởi Chiếu"
+        aria-describedby="helpId" ngModel>
+    </div>
+    <div class="form-group">
+        <label for="">Đánh Giá</label>
+      <input #danhGia type="number" name="danhGia" id="" class="form-control" placeholder="Đánh Giá" aria-describedby="helpId" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="">Hình Ảnh</label>
+    <input #hinhAnh type="file" name="hinhAnh" id="" class="form-control" placeholder="Hình Ảnh" aria-describedby="helpId"ngModel>
+    </div>
+    <div class="form-group">
+      <button type="submit" *ngIf="!capnhatStatus" class="btn btn-primary w-100">Thêm Phim</button>
+      <button type="button" *ngIf="capnhatStatus" (click)="capNhatPhim(frmThemPhim.value, hinhAnh)"
+        class="btn btn-outline-info w-100"> Cập Nhật Phim</button>
+    </div>
+  </form>
+  
+  
+  <!-- <img src="../../../assets/images/avengers-infinity-war-1553438735.jpg" alt=""> -->
+  <!-- table -->
+  <table class="table w-100">
+    <thead class="bg-dark text-white">
+      <th>STT</th>
+      <th>Mã Phim</th>
+      <th>Tên Phim</th>
+      <th>Hình Ảnh</th>
+      <th>Trailer</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody class="text-white">
+      <tr *ngFor="let phim of DanhSachPhim; let STT = index">
+        <td>{{STT}}</td>
+        <td>{{phim.maPhim}}</td>
+        <td>{{phim.tenPhim}}</td>
+        <td><img [src]='phim.hinhAnh'/></td>
+        <td>{{phim.trailer}}</td>
+
+
+        <td>
+          <button class="btn btn-primary" (click)="doiCapNhat(phim)">Chỉnh Sửa</button>
+          <button class=" ml-2 btn btn-danger" (click)="xoaPhim(phim.maPhim)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

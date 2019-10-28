@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/template/base/reset';
+@import './app/template/Helpers/variables';
+@import './app/template/Helpers/mixin';
+@import './app/template/components/app-home';
+@import './app/template/components/app-admin';
+@import './app/template/components/header';
+@import'./app/template/components/footer';
+@import'./app/template/components/slider';
+@import './app/template/components/card';
+@import './app/template/Commons/button';
+@import './app/template/Commons/ghe';
+@import './app/template/Commons/progress_bar';
+@import './app/template/components/danh-sach-phim';
+@import './app/template/Commons/video';
+@import './app/template/components/chi-tiet-phim';
+
+@import './app/template/components/dang-nhap';
+@import './app/template/components/quan-ly-nguoi-dung';
+@import './app/template/components/quan-ly-phim';
+@import './app/template/components/chi-tiet-dat-ve';

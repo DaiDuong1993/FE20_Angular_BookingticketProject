@@ -1,0 +1,110 @@
+.card-phim{
+    height: 600px;
+    figure.effect-layla{
+        padding: 5px;
+        
+
+        img{
+            margin-top: 5px;
+            height: 440px;
+            transition: opacity 0.35s, transform 0.35s;
+            transform: translate3d(0px,-8px, 0px);
+            border: 3px solid;
+            border: 2px solid gray;
+            // radial-gradient( #fffb00, #48ff00, #ff0000, #ff7300, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) 1;
+            border-radius: 10px;
+        }
+        figcaption{
+
+            &:before{
+                position: absolute;
+                content: '';
+                opacity: 0;
+                top: 50px;
+                right: 20px;
+                bottom: 250px;
+                left: 20px;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                -webkit-transform: scale(0,1);
+                transform: scale(0,1);
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                transition: opacity 0.35s, transform 0.35s;
+                
+            }
+            &:after{
+                position: absolute;
+                content: '';
+                opacity: 0;
+                top: 30px;
+                right: 30px;
+                bottom: 200px;
+                left: 30px;
+                border-right: 1px solid #fff;
+                border-left: 1px solid #fff;
+                -webkit-transform: scale(1,0);
+                transform: scale(1,0);
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                transition: opacity 0.35s, transform 0.35s;
+               
+            }
+            
+            h4{
+                color: #fff;
+                text-align: center;
+            }
+        }
+        button{
+            display: none;
+            &:focus{
+                outline: none;
+            }
+        }
+        &:hover{
+            img{
+                background-origin: border-box;
+                border-radius: 5px;
+                filter: blur(.7);
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+                -webkit-transition-delay: 0.15s;
+	            transition-delay: 0.15s;
+            }
+            figcaption::before,
+            figcaption::after{
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition-delay: 0.15s;
+	            transition-delay: 0.15s;
+            }
+            button{
+                margin-top: 10px;
+                display: inline-block;
+                 
+            }
+            figcaption{
+                h4{
+                    display: none;
+                }
+                
+                
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

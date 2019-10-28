@@ -1,0 +1,177 @@
+<div class="chitietphim" [ngStyle]="{ 'background-image': 'url(' + chiTietPhim.hinhAnh + ')'}">
+</div>
+<div class="overlay"></div>
+<div class="container content">
+    <!-- normal-screen -->
+    <div class="row">
+        <!--Thông tin chi tiết phim-->
+        <div class="col-md-4 ">
+            <div class="play-box">
+                <img class="mt-5 " src="{{chiTietPhim.hinhAnh}}" />
+                <div class="play-button" (click)="phatTrailer()">
+                    <i class="fa fa-play"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table mt-5">
+                <thead>
+
+                    <th colspan="2">
+                        <span class="display-4">
+                            {{chiTietPhim.tenPhim}}
+                        </span>
+                        <br/>
+                        <br/>
+                        <span>{{chiTietPhim.moTa | shortcut :'250'}}</span>
+                        <br>
+                    </th>
+
+                </thead>
+            
+                <tbody>
+                    <tr>
+                        <td>Ngày khởi chiếu</td>
+                        <td>{{chiTietPhim.ngayKhoiChieu | date : 'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Đánh Giá:</td>
+                        <td>
+                            <!-- <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span> -->
+                            <div class="star-outer">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                <div class="star-inner" id="star-inner">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                </div>
+                                
+                            </div>
+                            <span class="number-rating" id="number-rating"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+    
+    <br />
+     <!--Thông tin lịch chiếu phim-->
+    <div>
+       
+        <ul class="nav nav-tabs">
+            <li *ngFor="let htr of chiTietPhim.heThongRapChieu; let stt=index" class="nav-item">
+                <a [ngClass]="{'active':stt===0}" class="nav-link" data-toggle="tab"
+                    href="#{{htr.maHeThongRap}}">{{htr.tenHeThongRap}}</a>
+            </li>
+
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div *ngFor="let htr of chiTietPhim.heThongRapChieu; let stt=index" [ngClass]="{'active':stt===0}"
+                class="tab-pane container" id="{{htr.maHeThongRap}}">
+                <!-- {{htr.tenHeThongRap}} -->
+                <!--load cụm rạp dựa trên hệ thống rạp-->
+                <div *ngFor="let cumRap of htr.cumRapChieu" class="card text-left">
+                    <div class="card-body">
+                        <h4 class="card-title">{{cumRap.tenCumRap}}</h4>
+                        <p class="card-text">
+                            <!--Load lịch chiếu trên từng cụm rạp-->
+                            <ng-container *ngFor="let lichChieu of cumRap.lichChieuPhim; let i=index">
+                                <a routerLink="/chi-tiet-dat-ve/{{chiTietPhim.maPhim}}/{{lichChieu.maLichChieu}}" *ngIf="i<=6"
+                                    class="text-success display-4">
+                                    {{lichChieu.ngayChieuGioChieu | date : 'hh:mm'}}
+                                </a>
+                            </ng-container>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- small-screen -->
+<div class="small_screen">
+    <div class="phim_chitiet row">
+        <img class="col-6" [src]="chiTietPhim.hinhAnh" alt="">
+        <div class="col-6">
+            <span>{{chiTietPhim.tenPhim}}</span>
+            <div>
+                {{chiTietPhim.moTa | shortcut : '50'}}
+            </div>
+            <div>
+                Ngày Khởi Chiếu:
+                {{chiTietPhim.ngayKhoiChieu | date : 'dd/MM/yyyy'}}
+            </div>
+            
+            <div class="star-outer">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                <div class="star-inner" id="star-inner2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                </div>
+                
+            </div>
+            <span class="number-rating" id="number-rating2"></span>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="lich">
+        <ul class="nav nav-tabs">
+            <li *ngFor="let rap of htRapChieu; let stt=index" class="nav-item">
+                <a [ngClass]="{'active':stt===0}" class="nav-link" data-toggle="tab"
+                    href="#{{rap.maHeThongRap}}1">{{rap.tenHeThongRap}}</a>
+            </li>
+    
+        </ul>
+        
+        <div class="tab-content">
+            <div *ngFor="let rap of htRapChieu; let id=index" [ngClass]="{'active':id===0}"
+                class="tab-pane container" id="{{rap.maHeThongRap}}1">
+                
+                
+                <div *ngFor="let cumRap of rap.cumRapChieu" class="card text-left">
+                    <div class="card-body">
+                        <h4 class="card-title">{{cumRap.tenCumRap}}</h4>
+                        <p class="card-text">                          
+                            <ng-container *ngFor="let lichChieu of cumRap.lichChieuPhim; let i=index">
+                                <a routerLink="/chi-tiet-dat-ve/{{chiTietPhim.maPhim}}/{{lichChieu.maLichChieu}}" *ngIf="i<=6"
+                                    class="text-success display-4">
+                                    {{lichChieu.ngayChieuGioChieu | date : 'hh:mm'}}
+                                </a>
+                            </ng-container>
+                        </p>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+</div>
+<div class="play_video" *ngIf="hienthi" (click)="hideVideo()">
+    <iframe width="978" height="538" [src]="linkTrailer | safe" frameborder="10"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

@@ -1,0 +1,58 @@
+@mixin size($width, $height) {
+    height: $height;
+    width: $width;
+  }  
+
+  @mixin draw-progress($progress, $color) {
+    .pie {
+      .half-circle {
+        border-color: $color;
+      }
+  
+      .left-side {
+        transform: rotate($progress * 3.6deg);
+      }
+  
+      @if $progress <= 50 {
+        .right-side {
+          display: none;
+        }
+      } @else {
+        clip: rect(auto, auto, auto, auto);
+  
+        .right-side {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  
+  @mixin draw-progress--solid($progress, $color, $bg-color) {
+    background: linear-gradient(to right, $color 50%, $bg-color 50%);
+    
+    &:before {
+      @if $progress <= 50 {
+        background: $bg-color;
+        transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+      } @else {
+        background: $color;
+        transform: rotate((100 - $progress) / 100 * 360deg);
+      }
+    }
+  }
+
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($map: $breakpoints, $key:$breakpoint ){
+        $value: map-get($map: $breakpoints, $key:$breakpoint );
+        @media screen and (max-width: $value){
+            @content;
+        }
+    }
+    @else{
+        @warn "breakpoint is not invalid!"
+    }
+}
+
+
+
